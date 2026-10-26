@@ -4,49 +4,46 @@ Oct 8, 2026 · Clémentin LY, Emi LIM, Clément BAS
 
 ## 1. Définition des besoins
 
-Nous voulons un jeu web 2D dans l'univers Pokémon (1ʳᵉ génération) où le joueur progresse à travers 4 arènes de difficulté croissante (facile, normale, difficile, impossible), en construisant son équipe grâce à des boosters achetés avec les pièces gagnées.
-
 ### Contexte
 
-Projet fullstack réalisé en équipe dans le cadre du projet fil rouge coordination frontend/backend. Stack imposée : **Express** (Node.js) côté serveur, **Vue.js** côté client.
+Pokémon est l'une des franchises de jeu vidéo les plus populaires au monde. Sa communauté s'étend sur plusieurs générations, des joueurs qui ont découvert la série à la fin des années 1990 jusqu'aux joueurs d'aujourd'hui.
 
-### Problème adressé
+Les jeux de la série principale demandent plus de 30 heures de jeu, reposent sur une longue phase d'exploration et nécessitent une console. Une grande partie des fans, notamment ceux qui ont grandi avec les premiers jeux, n'a plus le temps de s'y investir, tout en restant attachée à l'univers.
 
-Les jeux Pokémon officiels sont longs (30 h et plus), centrés sur l'exploration et liés à une console. Il manque un jeu court, jouable dans un navigateur, centré uniquement sur ce que beaucoup de joueurs préfèrent : composer une équipe et battre des champions d'arène. La collection par boosters ajoute la dimension « ouverture de cartes » appréciée des fans du JCC Pokémon.
+### Problématique
+
+Il n'existe pas d'expérience Pokémon courte, accessible depuis un simple navigateur, qui permette de retrouver l'essentiel du plaisir de la série (combattre, collectionner, progresser) en quelques minutes par session.
 
 ### Objectifs
 
-- Proposer une boucle de jeu courte et rejouable : combattre, gagner des pièces, ouvrir des boosters, progresser.
-- Offrir une progression claire, en 4 arènes : facile, normale, difficile, impossible.
-- Sauvegarder la progression de chaque joueur et la comparer aux autres via un classement.
-- Livrer un produit techniquement solide : logique sensible côté serveur, données fiables, application responsive.
+- Permettre aux fans de profiter de l'univers Pokémon en sessions courtes, sans console ni installation.
+- Leur offrir un sentiment de progression durable, qui donne envie de revenir.
+- Satisfaire à la fois les joueurs occasionnels et ceux qui recherchent un véritable défi.
+- Valoriser la collection, l'un des moteurs historiques de la franchise.
+- Permettre aux joueurs de se mesurer entre eux de façon équitable.
 
 ### Besoins fonctionnels
 
-- Créer un compte, se connecter, retrouver sa progression sur n'importe quel appareil.
-- Recevoir une équipe de départ à la première connexion, suffisante pour battre l'arène 1.
-- Parcourir les arènes sur un écran qui les montre vues de l'extérieur, en passant de l'une à l'autre avec des flèches gauche et droite.
-- Affronter les arènes strictement dans l'ordre : l'arène 3 n'est accessible qu'après avoir battu l'arène 2, et ainsi de suite.
-- À l'intérieur d'une arène, se déplacer en 2D, résoudre une énigme (pousser des rochers, activer des interrupteurs…) et battre 2 à 3 dresseurs avant d'affronter le champion.
-- Gagner des pièces à chaque combat gagné : peu contre un dresseur, beaucoup contre un champion, et davantage la première fois qu'un adversaire est battu.
-- Acheter des boosters de plusieurs raretés (prix croissant) et des boosters par type (Feu, Eau, Plante…). Chaque booster contient 6 Pokémon, révélés sous forme de cartes à l'ouverture.
-- Acheter des objets dans une boutique : potions, rappels, soins de statut.
-- Consulter sa collection, son inventaire d'objets et composer son équipe de 6 Pokémon ; améliorer un Pokémon grâce à ses doublons.
-- Consulter un classement des joueurs.
+Le joueur doit pouvoir :
+
+- créer un compte et retrouver sa progression sur n'importe quel appareil ;
+- commencer à jouer immédiatement, sans préparation ;
+- relever des défis de difficulté croissante ;
+- être récompensé de ses efforts, même en cas d'échec ;
+- collectionner des Pokémon et composer son équipe ;
+- comparer sa progression à celle des autres joueurs.
 
 ### Besoins non fonctionnels
 
-- **Sécurité** : mots de passe hachés, sessions authentifiées, et calcul côté serveur des pièces, des tirages de boosters et des résultats de combat, pour empêcher la triche.
-- **Performance** : chargement de l'application en moins de 3 s, déplacements et combats fluides dans le navigateur.
-- **Accessibilité** : jouable sur ordinateur et mobile (responsive), textes lisibles.
-- **Maintenabilité** : données des Pokémon stockées en base, arènes paramétrables sans modifier le code.
+- **Sécurité** : progression et classement protégés contre la triche.
+- **Performance** : jeu rapide à charger et fluide.
+- **Accessibilité** : jouable sur ordinateur et sur mobile.
+- **Maintenabilité** : contenu du jeu facile à faire évoluer.
 
 ### Contraintes
 
-- Une seule génération de Pokémon : la 1ʳᵉ (151 Pokémon, 15 types).
-- Jeu entièrement en 2D.
-- Projet non commercial : Pokémon est une marque de Nintendo / The Pokémon Company, le jeu reste un projet pédagogique privé, qui ne sera pas publié ; les cartes officielles du JCC Pokémon peuvent donc être affichées.
-- Équipe de 3 personnes, délai d'un projet de Master 1 : le nombre d'arènes est volontairement limité à 4 pour garder un périmètre réaliste.
+- Jeu en 2D, jouable dans un navigateur web.
+- Projet non commercial et non publié : l'univers Pokémon et ses visuels appartiennent à Nintendo / The Pokémon Company.
 
 ## 2. Étude des utilisateurs (personae)
 
@@ -57,22 +54,22 @@ La cible principale est le joueur nostalgique de 20 à 35 ans qui veut des sessi
 | Âge, situation | 27 ans, développeur en CDI | 21 ans, étudiante en informatique | 16 ans, lycéen | 34 ans, infirmière, deux enfants |
 | Rapport à Pokémon | A grandi avec Rouge et Bleu, ne joue plus aux jeux récents | Joue en compétitif, connaît les stats et les faiblesses par cœur | Collectionne les cartes du JCC, adore ouvrir des boosters | Connaît les Pokémon emblématiques, sans plus |
 | Contexte de jeu | Pauses déjeuner, soirées, sur ordinateur | Longues sessions, sur ordinateur | Téléphone, dans les transports | Téléphone, 10 minutes le soir |
-| Objectifs | Retrouver l'ambiance de la 1ʳᵉ génération sans 30 h d'aventure | Battre l'arène impossible et être 1ʳᵉ du classement | Compléter sa collection des 151 | Se détendre, sentir qu'elle progresse |
+| Objectifs | Retrouver l'ambiance de la 1ʳᵉ génération sans 30 h d'aventure | Venir à bout des adversaires les plus difficiles et être 1ʳᵉ du classement | Compléter sa collection des 151 | Se détendre, sentir qu'elle progresse |
 | Frustrations | Les jeux trop longs, les mécaniques modernes qu'il ne connaît plus | Les jeux trop faciles, la chance qui décide de tout, la triche | Les doublons, les Pokémon rares introuvables | Être bloquée, les interfaces chargées |
-| Ce qu'elle ou il attend du jeu | Une partie qui reprend où il l'a laissée, en quelques clics | Un vrai défi stratégique, un classement fiable | Un suivi clair de sa collection, des boosters variés | Une prise en main immédiate, la possibilité de rejouer pour gagner des pièces |
-| Fonctionnalités clés | Connexion, sauvegarde, 1ʳᵉ génération uniquement | Arènes difficiles, classement, logique côté serveur | Boosters par rareté et par type, Pokédex | Équipe de départ, gains en rejouant, interface mobile |
+| Attentes | Une partie qui reprend où il l'a laissée, en quelques clics | Un vrai défi stratégique, un classement fiable | Un suivi clair de sa collection, des boosters variés | Une prise en main immédiate, une progression qui ne la bloque jamais |
 
-**Ce que les personae imposent au produit :**
+**Ce que les personae attendent du produit :**
 
-- Des sessions courtes : un combat d'arène doit durer quelques minutes (Lucas, Sarah).
-- Une courbe de difficulté progressive, mais un sommet réellement difficile (Sarah, Inès).
-- Un moyen de débloquer une situation : rejouer une arène rapporte des pièces (Sarah, Théo).
+- Des sessions courtes, que l'on peut interrompre et reprendre (Lucas, Sarah).
+- Une difficulté progressive, avec un dernier défi réellement exigeant (Sarah, Inès).
+- Une progression qui ne bloque jamais : chaque effort doit rapporter quelque chose (Sarah, Théo).
+- Une collection valorisée, y compris les doublons (Théo).
 - Un classement qu'on ne peut pas truquer (Inès).
 - Une interface utilisable sur téléphone (Théo, Sarah).
 
 ## 3. État de l'art
 
-Aucun jeu connu ne combine progression par arènes et collection par boosters dans l'univers Pokémon : chaque brique existe séparément, et notre concept les assemble.
+Aucun jeu connu ne combine progression par arènes et collection par boosters dans l'univers Pokémon : chaque brique existe séparément, sans qu'aucune offre ne les réunisse.
 
 | Jeu | Éditeur | Ce que nous en retenons | Ce qui lui manque pour notre cible |
 | --- | --- | --- | --- |
@@ -85,7 +82,7 @@ Aucun jeu connu ne combine progression par arènes et collection par boosters da
 
 **Idée récurrente chez les fans.** Des joueurs réclament depuis longtemps un spin-off de gestion où l'on incarnerait un champion d'arène ([Pokébip](https://www.pokebip.com/espace-membre/blogs/253889/article/241694), [PokéCommunity](https://www.pokecommunity.com/threads/your-own-gym.180417/)), signe d'un intérêt réel pour un jeu centré sur les arènes.
 
-**Hors Pokémon,** les jeux de collection à tirage aléatoire (gacha) montrent les règles à respecter : afficher les taux de chaque rareté, limiter la frustration des doublons, garder une progression possible sans payer. Notre jeu n'a aucun achat réel : seules les pièces gagnées en jeu achètent des boosters.
+**Hors Pokémon,** les jeux de collection à tirage aléatoire (gacha) montrent les règles à respecter : afficher les taux de chaque rareté, limiter la frustration des doublons, garder une progression possible sans payer.
 
 **Enseignements pour notre projet :**
 
@@ -115,7 +112,7 @@ Une défaite ne bloque jamais le joueur : il peut rejouer une arène déjà batt
 - **Déblocage strict** : les arènes se font dans l'ordre ; une arène reste verrouillée tant que la précédente n'est pas battue.
 - **Déroulement d'une arène** : exploration en 2D, une énigme à résoudre, 2 à 3 combats de dresseurs, puis le combat contre le champion. L'arène n'est validée qu'après la victoire sur le champion. Une défaite contre n'importe quel adversaire fait perdre l'arène : le joueur recommence tous les combats depuis le début.
 - **Récompenses par combat** : chaque combat gagné rapporte des pièces, peu pour un dresseur et beaucoup pour un champion. La première victoire contre un adversaire rapporte plus que les suivantes. Le joueur peut donc accumuler des pièces sans battre le champion.
-- **Deux usages des pièces** : les boosters, et une boutique d'objets (potions, rappels, soins de statut).
+- **Deux usages des pièces** : les boosters, et une boutique d'objets (potions, rappels, soins de statut). Le jeu ne comporte aucun achat réel : seules les pièces gagnées en jeu permettent d'acheter.
 - **Boosters de rareté**, tous types confondus, de plus en plus chers. La rareté dépend du stade dans la lignée, la forme finale étant toujours épique :
   - Lignée à 3 stades : base commune, 1ʳᵉ évolution rare, 2ᵉ évolution épique (Salamèche, Reptincel, Dracaufeu)
   - Lignée à 2 stades : base rare, évolution épique (Pikachu, Raichu ; Évoli, puis Aquali, Voltali, Pyroli)
@@ -142,27 +139,15 @@ La rareté fixe le niveau de puissance d'un Pokémon, et l'écart entre deux pal
 
 L'indice correspond au total des stats du Pokémon (PV, Attaque, Défense, Spécial, Vitesse). Ce total est fixé par la rareté, puis réparti selon le profil réel du Pokémon : Ronflex garde beaucoup de PV, Alakazam un Spécial élevé. Les valeurs exactes seront ajustées pendant l'équilibrage, en gardant cette règle d'écart.
 
-### Architecture technique
-
-| Couche | Technologie | Rôle |
-| --- | --- | --- |
-| Client | Vue.js 3 + Pinia + Vue Router | Interface : connexion, sélection des arènes, collection, boutiques, ouverture de boosters, classement |
-| Jeu 2D | Phaser 3, intégré dans un composant Vue ; plans des arènes dessinés avec Tiled | Intérieur des arènes : déplacements case par case, collisions, énigmes, rencontres avec les dresseurs ; scène de combat au tour par tour |
-| Serveur | Node.js + Express | API REST, authentification (JWT, bcrypt), résolution des combats, tirage des boosters, gestion des pièces et des objets |
-| Base de données | PostgreSQL | Joueurs, collections, inventaires, arènes, tentatives, boosters |
-| Données Pokémon | PokéAPI + TCGdex, importées une seule fois | PokéAPI : stats, types, attaques, chaînes d'évolution, noms français et sprites des 151 Pokémon. TCGdex : images des cartes officielles du JCC, en français. Le tout stocké en base |
-
-Toute la logique qui touche à la progression (pièces, tirages, résultats de combat) est calculée par le serveur : le client ne fait qu'afficher. C'est ce qui rend le classement fiable.
-
 ### Alternatives envisagées
 
 | Alternative | Pourquoi elle a été écartée |
 | --- | --- |
 | Remake d'un jeu Pokémon complet (exploration, scénario) | Volume de contenu (cartes, PNJ, dialogues) trop important pour le délai ; copie directe de l'œuvre originale |
-| Roguelite inspiré de PokéRogue | Concept déjà réalisé et très abouti ; pas de collection durable entre les parties |
+| Roguelite inspiré de PokéRogue | Concept déjà réalisé et très abouti |
 | Gestion d'arène (le joueur construit son arène, les autres l'affrontent) | Idée originale, mais l'éditeur d'arène et l'équilibrage entre joueurs alourdissent fortement le projet ; gardée comme évolution possible |
 | Toutes générations confondues | Plus de 1 000 Pokémon à intégrer et équilibrer ; perte de l'identité « 1ʳᵉ génération » |
-| Moteur de jeu complet (Unity, Godot) | Hors de la stack web du projet ; l'API et l'interface Vue resteraient à faire à côté |
+|  | trop lourd pour un jeu navigateur |
 
 ## 5. Fonctionnalités principales
 
@@ -170,24 +155,31 @@ La première version livre la boucle complète (compte, arènes, pièces, booste
 
 ### Version 1 (MVP)
 
-| Fonctionnalité | Description |
-| --- | --- |
-| Inscription et connexion | Création de compte (pseudo, e-mail, mot de passe haché), connexion, déconnexion, session persistante |
-| Sauvegarde de la progression | Pièces, collection, doublons, inventaire, équipe et arènes battues stockées côté serveur, accessibles depuis n'importe quel appareil |
-| Équipe de départ | À la première connexion, le joueur reçoit un ou plusieurs Pokémon définis, suffisants pour battre l'arène 1 |
-| Sélection des arènes | Chaque arène affichée vue de l'extérieur, une à la fois ; flèches gauche et droite pour passer de l'une à l'autre ; statut visible : verrouillée, disponible, battue |
-| Déblocage progressif | Une arène n'est accessible qu'après la victoire sur la précédente ; règle vérifiée par le serveur |
-| Exploration de l'arène | Intérieur de l'arène en vue de dessus : déplacement du personnage case par case au clavier ou au toucher, collisions ; une défaite contre n'importe quel adversaire fait perdre l'arène, à recommencer depuis le début |
-| Énigme d'arène | Une énigme par arène bloque l'accès au champion : rochers à pousser, interrupteurs à activer, ou autre mécanique propre à l'arène |
-| Combats de dresseurs | 2 à 3 dresseurs placés sur le chemin du champion, chacun avec 1 à 6 Pokémon (6 dans l'arène impossible), qui déclenchent un combat quand le joueur passe devant eux |
-| Combat contre le champion | Combat final de l'arène contre une équipe de 6 Pokémon, au tour par tour : choix de l'attaque, efficacité des types, changement de Pokémon, utilisation d'objets. Résultat calculé par le serveur |
-| Récompenses | Pièces gagnées à chaque combat gagné : peu pour un dresseur, beaucoup pour un champion ; montant plus élevé la première fois que l'adversaire est battu |
-| Boutique de boosters | Boosters de rareté (commun, rare, épique, légendaire, prix croissant) et boosters de type avec un taux par Pokémon ; tous les taux affichés |
-| Ouverture de booster | Tirage de 6 Pokémon effectué par le serveur ; révélation animée de la carte officielle du JCC de chaque Pokémon obtenu |
-| Boutique d'objets | Achat de potions, rappels et soins de statut avec les pièces ; objets stockés dans l'inventaire |
-| Collection, inventaire et équipe | Liste des Pokémon possédés avec leur nombre de doublons (filtres par type et rareté), objets possédés, composition de l'équipe de 6 Pokémon |
-| Amélioration par doublons | Tous les 10 doublons, une amélioration de +5 % des stats du Pokémon ; 5 améliorations au maximum (50 doublons), vérifiées par le serveur |
-| Classement | Joueurs classés par arène la plus haute battue, départagés par la date d'obtention |
+| Fonctionnalité | Description | Personae |
+| --- | --- | --- |
+| Inscription et connexion | Création de compte (pseudo, e-mail, mot de passe haché), connexion, déconnexion, session persistante | Tous |
+| Sauvegarde de la progression | Pièces, collection, doublons, inventaire, équipe et arènes battues stockées côté serveur, accessibles depuis n'importe quel appareil | Lucas, Sarah |
+| Équipe de départ | À la première connexion, le joueur reçoit un ou plusieurs Pokémon définis, suffisants pour battre l'arène 1 | Sarah, Lucas |
+| Sélection des arènes | Chaque arène affichée vue de l'extérieur, une à la fois ; flèches gauche et droite pour passer de l'une à l'autre ; statut visible : verrouillée, disponible, battue | Tous |
+| Déblocage progressif | Une arène n'est accessible qu'après la victoire sur la précédente ; règle vérifiée par le serveur | Inès, Sarah |
+| Exploration de l'arène | Intérieur de l'arène en vue de dessus : déplacement du personnage case par case au clavier ou au toucher, collisions ; une défaite contre n'importe quel adversaire fait perdre l'arène, à recommencer depuis le début | Lucas |
+| Énigme d'arène | Une énigme par arène bloque l'accès au champion : rochers à pousser, interrupteurs à activer, ou autre mécanique propre à l'arène | Lucas, Inès |
+| Combats de dresseurs | 2 à 3 dresseurs placés sur le chemin du champion, chacun avec 1 à 6 Pokémon (6 dans l'arène impossible), qui déclenchent un combat quand le joueur passe devant eux | Inès, Lucas |
+| Combat contre le champion | Combat final de l'arène contre une équipe de 6 Pokémon, au tour par tour : choix de l'attaque, efficacité des types, changement de Pokémon, utilisation d'objets. Résultat calculé par le serveur | Inès |
+| Récompenses | Pièces gagnées à chaque combat gagné : peu pour un dresseur, beaucoup pour un champion ; montant plus élevé la première fois que l'adversaire est battu | Sarah, Théo |
+| Boutique de boosters | Boosters de rareté (commun, rare, épique, légendaire, prix croissant) et boosters de type avec un taux par Pokémon ; tous les taux affichés | Théo |
+| Ouverture de booster | Tirage de 6 Pokémon effectué par le serveur ; révélation animée de la carte officielle du JCC de chaque Pokémon obtenu | Théo |
+| Boutique d'objets | Achat de potions, rappels et soins de statut avec les pièces ; objets stockés dans l'inventaire | Inès, Sarah |
+| Collection, inventaire et équipe | Liste des Pokémon possédés avec leur nombre de doublons (filtres par type et rareté), objets possédés, composition de l'équipe de 6 Pokémon | Théo, Inès |
+| Amélioration par doublons | Tous les 10 doublons, une amélioration de +5 % des stats du Pokémon ; 5 améliorations au maximum (50 doublons), vérifiées par le serveur | Théo |
+| Classement | Joueurs classés par arène la plus haute battue, départagés par la date d'obtention | Inès |
+
+### Exigences non fonctionnelles
+
+- **Sécurité** : mots de passe hachés, sessions authentifiées, et calcul côté serveur des pièces, des tirages de boosters et des résultats de combat, pour empêcher la triche.
+- **Performance** : chargement de l'application en moins de 3 s, déplacements et combats fluides dans le navigateur.
+- **Accessibilité** : jouable sur ordinateur et mobile (responsive), textes lisibles.
+- **Maintenabilité** : données des Pokémon stockées en base, arènes paramétrables sans modifier le code.
 
 ### Évolutions envisagées
 
