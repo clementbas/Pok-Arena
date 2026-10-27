@@ -2,69 +2,19 @@
 
 **Équipe** : Clémentin LY (front-end), Emi LIM (game design), Clément BAS (back-end et base de données)
 
-**Documents liés** : [Fiche de cadrage](fiche-de-cadrage.md) · [Wireframes Figma](https://www.figma.com/design/ifk933rnzkzElYfMFhCt2N)
+**Document lié** : [Fiche de cadrage](fiche-de-cadrage.md) (besoin, utilisateurs, état de l'art, concept et périmètre de la version 1).
 
-Ce document complète la fiche de cadrage : les parties 1 à 3 en reprennent l'essentiel, les parties 4 à 6 détaillent la solution technique.
+Ce document détaille la solution technique du projet.
 
 ## Sommaire
 
-1. [Expression du besoin](#1-expression-du-besoin)
-2. [Analyse des utilisateurs](#2-analyse-des-utilisateurs)
-3. [État de l'art et positionnement](#3-état-de-lart-et-positionnement)
-4. [Solutions possibles](#4-solutions-possibles)
-5. [Solution retenue](#5-solution-retenue)
-6. [Points à définir](#6-points-à-définir)
+1. [Solutions possibles](#1-solutions-possibles)
+2. [Solution retenue](#2-solution-retenue)
+3. [Points à définir](#3-points-à-définir)
 
 ---
 
-## 1. Expression du besoin
-
-Les jeux Pokémon de la série principale demandent plus de 30 heures de jeu et une console. Beaucoup de fans, notamment ceux qui ont grandi avec les premiers jeux, n'ont plus le temps de s'y investir mais restent attachés à l'univers.
-
-**Besoin** : une expérience Pokémon courte, jouable dans un navigateur, qui reprend l'essentiel du plaisir de la série : combattre, collectionner et progresser, en quelques minutes par session.
-
-**Comment Pok’Aréna y répond**
-
-| Objectif | Réponse |
-| --- | --- |
-| Jouer par sessions courtes, sans installation | Jeu web en 2D. Une arène se joue en quelques minutes et la progression est sauvegardée côté serveur. |
-| Progresser durablement | 4 arènes de difficulté croissante, pièces, boosters, amélioration des Pokémon avec les doublons, classement. |
-| Contenter occasionnels et compétiteurs | Difficulté graduée de facile à impossible. |
-| Valoriser la collection | Boosters de type et de rareté, cartes officielles du JCC révélées une par une. |
-| Un classement équitable | Tous les calculs sont faits par le serveur, aucun achat avec de l'argent réel. |
-
-**Contraintes** : jeu en 2D, uniquement dans le navigateur (ordinateur et mobile), projet non commercial.
-
----
-
-## 2. Analyse des utilisateurs
-
-La fiche de cadrage décrit quatre profils. Ce qu'ils attendent du produit :
-
-| Profil | Attente principale | Conséquence sur le jeu |
-| --- | --- | --- |
-| **Lucas**, 27 ans, le nostalgique (cible principale) | Retrouver l'ambiance de la 1ʳᵉ génération, reprendre sa partie en quelques clics | 151 Pokémon de la 1ʳᵉ génération, progression sauvegardée |
-| **Inès**, 21 ans, la compétitrice | Un vrai défi et un classement fiable | Arènes difficiles, combats sans hasard, calculs côté serveur |
-| **Théo**, 16 ans, le collectionneur | Compléter sa collection, ouvrir des boosters | Ouverture de booster soignée, doublons utiles, interface mobile |
-| **Sarah**, 34 ans, la joueuse occasionnelle | Prise en main immédiate, ne jamais être bloquée | Équipe de départ fournie, pièces gagnées à chaque combat, interface simple |
-
----
-
-## 3. État de l'art et positionnement
-
-La fiche de cadrage détaille les jeux étudiés (Pokémon Rouge et Bleu, JCC Pokémon Pocket, Pokémon GO, Pokémon Champions, Pokémon Showdown, PokéRogue). En résumé :
-
-| Ce que l'on aime | Où on le trouve | Ce qui manque |
-| --- | --- | --- |
-| Progression par arènes | Jeux principaux | Trop long, console obligatoire |
-| Ouverture de boosters | JCC Pokémon Pocket | Pas de combats Pokémon |
-| Combat dans le navigateur | Pokémon Showdown, PokéRogue | Pas de progression par arènes avec collection |
-
-**Positionnement** : Pok’Aréna réunit en une seule expérience courte la progression par arènes, la collection par boosters et le jeu dans le navigateur. PokéRogue montre qu'un jeu Pokémon 2D tourne bien dans un navigateur avec Phaser.
-
----
-
-## 4. Solutions possibles
+## 1. Solutions possibles
 
 ### Solutions de concept
 
@@ -92,9 +42,9 @@ La fiche de cadrage détaille les jeux étudiés (Pokémon Rouge et Bleu, JCC Po
 
 ---
 
-## 5. Solution retenue
+## 2. Solution retenue
 
-### 5.1 Fonctionnalités prévues
+### 2.1 Fonctionnalités prévues
 
 Les 16 fonctionnalités de la version 1, reprises de la fiche de cadrage, reliées aux écrans des wireframes.
 
@@ -117,7 +67,7 @@ Les 16 fonctionnalités de la version 1, reprises de la fiche de cadrage, relié
 | F15 | Amélioration des Pokémon avec les doublons | 7 |
 | F16 | Classement | 8 |
 
-### 5.2 Règles de jeu
+### 2.2 Règles de jeu
 
 Les règles de la fiche de cadrage sont conservées. Pour le développement, nous retenons les principes suivants.
 
@@ -129,7 +79,7 @@ Les règles de la fiche de cadrage sont conservées. Pour le développement, nou
 - **Défaite** : une défaite contre n'importe quel adversaire fait perdre l'arène, à recommencer depuis le début.
 - **Reprise** : la progression dans l'arène en cours est sauvegardée, le joueur peut fermer le navigateur et reprendre plus tard.
 
-### 5.3 Architecture logicielle
+### 2.3 Architecture logicielle
 
 Trois parties : une application Vue dans le navigateur, une API Express, une base PostgreSQL.
 
@@ -159,7 +109,7 @@ flowchart LR
 | Collection | `GET /api/collection`, `POST /api/collection/:id/upgrade`, `PUT /api/team` |
 | Classement | `GET /api/leaderboard` |
 
-### 5.4 Langages et librairies
+### 2.4 Langages et librairies
 
 | Domaine | Technologie |
 | --- | --- |
@@ -173,7 +123,7 @@ flowchart LR
 | Environnement local | Docker Compose (PostgreSQL) |
 | Intégration continue | GitHub Actions |
 
-### 5.5 Modélisations du système
+### 2.5 Modélisations du système
 
 **Cas d'utilisation**
 
@@ -195,16 +145,9 @@ flowchart LR
 erDiagram
     USERS ||--o{ PLAYER_POKEMON : possède
     POKEMON ||--o{ PLAYER_POKEMON : "est possédé"
-    POKEMON ||--o{ MOVES : connaît
-    USERS ||--o{ PLAYER_ITEMS : possède
-    ITEMS ||--o{ PLAYER_ITEMS : "est possédé"
-    BOOSTERS ||--o{ BOOSTER_RATES : contient
-    POKEMON ||--o{ BOOSTER_RATES : "taux de tirage"
-    ARENAS ||--o{ TRAINERS : compte
-    USERS ||--o{ ARENA_RUNS : tente
-    ARENAS ||--o{ ARENA_RUNS : "est tentée"
     USERS ||--o{ ARENA_PROGRESS : progresse
     ARENAS ||--o{ ARENA_PROGRESS : "est battue"
+    ARENAS ||--o{ TRAINERS : compte
 
     USERS {
         int id PK
@@ -216,70 +159,23 @@ erDiagram
     POKEMON {
         int id PK
         string name
-        string type1
-        string type2
         string rarity
-        int hp
-        int attack
-        int defense
-        int special
-        int speed
-        string tcgdex_card_id
-    }
-    MOVES {
-        int id PK
-        int pokemon_id FK
-        string name
-        string type
-        int power
     }
     PLAYER_POKEMON {
         int user_id FK
         int pokemon_id FK
         int duplicates
         int upgrade_level
-        int team_slot
-    }
-    BOOSTERS {
-        int id PK
-        string kind
-        string name
-        int price
-    }
-    BOOSTER_RATES {
-        int booster_id FK
-        int pokemon_id FK
-        int rate
-    }
-    ITEMS {
-        int id PK
-        string name
-        int price
-    }
-    PLAYER_ITEMS {
-        int user_id FK
-        int item_id FK
-        int quantity
     }
     ARENAS {
         int id PK
-        int position
         string name
         string difficulty
     }
     TRAINERS {
         int id PK
         int arena_id FK
-        string name
         boolean is_champion
-        int reward
-    }
-    ARENA_RUNS {
-        int id PK
-        int user_id FK
-        int arena_id FK
-        string status
-        json state
     }
     ARENA_PROGRESS {
         int user_id FK
@@ -288,16 +184,17 @@ erDiagram
     }
 ```
 
-Quelques précisions :
+Le schéma montre les tables principales. Les autres tables suivent le même principe :
 
-- Les équipes adverses de chaque dresseur sont décrites dans un fichier de données, importé en base avec les arènes.
-- `ARENA_RUNS` contient la tentative en cours (dresseurs battus, combat en cours) pour permettre la reprise.
-- `ARENA_PROGRESS` alimente le classement : arène la plus haute battue, puis date de victoire.
-- `BOOSTER_RATES.rate` est exprimé sur 10 000 (700 pour 7 %), pour éviter les erreurs d'arrondi.
+- `POKEMON` contient aussi les types, les stats et l'identifiant de la carte TCGdex ; `MOVES` liste les attaques de chaque Pokémon.
+- `BOOSTERS` et `BOOSTER_RATES` décrivent les boosters et le taux de tirage de chaque Pokémon (sur 10 000, pour éviter les erreurs d'arrondi).
+- `ITEMS` et `PLAYER_ITEMS` gèrent les objets et l'inventaire.
+- `ARENA_RUNS` garde la tentative d'arène en cours pour permettre la reprise.
+- Le classement se calcule avec `ARENA_PROGRESS` : arène la plus haute battue, puis date de victoire.
 
-### 5.6 Maquettes
+### 2.6 Maquettes
 
-Les maquettes sont des wireframes simples en noir et blanc, en version ordinateur et mobile, disponibles dans [Figma](https://www.figma.com/design/ifk933rnzkzElYfMFhCt2N).
+Les maquettes sont des wireframes simples en noir et blanc, en version ordinateur et mobile. Les images sont dans `docs/wireframes/`.
 
 | Écran | Description |
 | --- | --- |
@@ -319,9 +216,9 @@ Les maquettes sont des wireframes simples en noir et blanc, en version ordinateu
 ![Collection](wireframes/07-collection-desktop.png)
 ![Classement](wireframes/08-classement-desktop.png)
 
-Les versions mobiles sont dans le fichier Figma et exportées dans `docs/wireframes/` (suffixe `-mobile`).
+Les versions mobiles sont dans le même dossier (suffixe `-mobile`).
 
-### 5.7 Méthode d'organisation du travail
+### 2.7 Méthode d'organisation du travail
 
 **Rôles**
 
@@ -348,7 +245,7 @@ Les versions mobiles sont dans le fichier Figma et exportées dans `docs/wirefra
 5. Arènes et exploration (F04 à F07).
 6. Classement, équilibrage, tests (F16).
 
-### 5.8 Organisation du dépôt Git
+### 2.8 Organisation du dépôt Git
 
 Un seul dépôt GitHub (monorepo).
 
@@ -380,7 +277,7 @@ pok-arena/
 
 ---
 
-## 6. Points à définir
+## 3. Points à définir
 
 Ces points sont à trancher par l'équipe, surtout par le game design. Une recommandation est proposée pour ne pas bloquer le développement.
 
