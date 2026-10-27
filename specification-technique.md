@@ -194,7 +194,7 @@ Le schéma montre les tables principales. Les autres tables suivent le même pri
 
 ### 2.6 Maquettes
 
-Les maquettes sont des wireframes simples en noir et blanc, en version ordinateur et mobile. Les images sont dans `docs/wireframes/`.
+Les maquettes sont des wireframes simples en noir et blanc, en version ordinateur et mobile, réalisés dans un fichier de wireframes (8 écrans, chacun en version ordinateur et mobile).
 
 | Écran | Description |
 | --- | --- |
@@ -206,17 +206,6 @@ Les maquettes sont des wireframes simples en noir et blanc, en version ordinateu
 | 6. Ouverture de booster | Révélation des 6 cartes une par une |
 | 7. Collection | Pokémon possédés, doublons, amélioration, équipe, objets |
 | 8. Classement | Liste des joueurs et rang du joueur |
-
-![Connexion](wireframes/01-connexion-desktop.png)
-![Carte des arènes](wireframes/02-arenes-desktop.png)
-![Exploration](wireframes/03-exploration-desktop.png)
-![Combat](wireframes/04-combat-desktop.png)
-![Boutique](wireframes/05-boutique-desktop.png)
-![Ouverture de booster](wireframes/06-booster-desktop.png)
-![Collection](wireframes/07-collection-desktop.png)
-![Classement](wireframes/08-classement-desktop.png)
-
-Les versions mobiles sont dans le même dossier (suffixe `-mobile`).
 
 ### 2.7 Méthode d'organisation du travail
 
