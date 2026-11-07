@@ -194,18 +194,22 @@ Le schéma montre les tables principales. Les autres tables suivent le même pri
 
 ### 2.6 Maquettes
 
-Les maquettes sont des wireframes simples en noir et blanc, en version ordinateur et mobile, réalisés dans un fichier de wireframes (8 écrans, chacun en version ordinateur et mobile).
+Les maquettes sont des wireframes simples en noir et blanc, en version ordinateur et mobile, réalisés dans un fichier Figma (8 écrans, chacun en version ordinateur et mobile).
 
-| Écran | Description |
-| --- | --- |
-| 1. Connexion | Connexion et inscription |
-| 2. Carte des arènes | Chemin horizontal sur lequel le joueur se déplace, 4 arènes (battue, disponible, verrouillées) |
-| 3. Exploration | Vue de dessus de l'arène, dresseurs, énigme, porte du champion |
-| 4. Combat | Pokémon face à face, barres de vie, actions, journal du tour |
-| 5. Boutique | Boosters de type et de rareté avec taux, objets |
-| 6. Ouverture de booster | Révélation des 6 cartes une par une |
-| 7. Collection | Pokémon possédés, doublons, amélioration, équipe, objets |
-| 8. Classement | Liste des joueurs et rang du joueur |
+**Vue d'ensemble (8 écrans)**
+
+| Écran | Aperçu (Desktop) | Version Mobile | Description |
+| --- | --- | --- | --- |
+| **1. Connexion** | ![Connexion Desktop](Maquettes/1.%20Connexion%20-%20Desktop.png) | [Voir la version mobile](Maquettes/1.%20Connexion%20-%20Mobile.png) | Connexion et inscription |
+| **2. Carte des arènes** | ![Arènes Desktop](Maquettes/2.%20Arènes%20-%20Desktop.png) | [Voir la version mobile](Maquettes/2.%20Arènes%20-%20Mobile.png) | Chemin horizontal sur lequel le joueur se déplace, 4 arènes (battue, disponible, verrouillées) |
+| **3. Exploration** | ![Exploration Desktop](Maquettes/3.%20Exploration%20-%20Desktop.png) | [Voir la version mobile](Maquettes/3.%20Exploration%20-%20Mobile.png) | Vue de dessus de l'arène, dresseurs, énigme, porte du champion |
+| **4. Combat** | ![Combat Desktop](Maquettes/4.%20Combat%20-%20Desktop.png) | [Voir la version mobile](Maquettes/4.%20Combat%20-%20Mobile.png) | Pokémon face à face, barres de vie, actions, journal du tour |
+| **5. Boutique** | ![Boutique Desktop](Maquettes/5.%20Boutique%20-%20Desktop.png) | [Voir la version mobile](Maquettes/5.%20Boutique%20-%20Mobile.png) | Boosters de type et de rareté avec taux, objets |
+| **6. Ouverture de booster** | ![Ouverture Desktop](Maquettes/6.%20Ouverture%20de%20booster%20-%20Desktop.png) | [Voir la version mobile](Maquettes/6.%20Ouverture%20de%20booster%20-%20Mobile.png) | Révélation des 6 cartes une par une |
+| **7. Collection** | ![Collection Desktop](Maquettes/7.%20Collection%20-%20Desktop.png) | [Voir la version mobile](Maquettes/7.%20Collection%20-%20Mobile.png) | Pokémon possédés, doublons, amélioration, équipe, objets |
+| **8. Classement** | ![Classement Desktop](Maquettes/8.%20Classement%20-%20Desktop.png) | [Voir la version mobile](Maquettes/8.%20Classement%20-%20Mobile.png) | Liste des joueurs et rang du joueur |
+
+> **Note** : Les versions mobiles sont accessibles en cliquant sur les liens « Voir la version mobile ». L'ensemble des wireframes est également disponible dans le dossier `Maquettes/` du dépôt.
 
 ### 2.7 Méthode d'organisation du travail
 
