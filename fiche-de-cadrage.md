@@ -147,7 +147,7 @@ L'indice correspond au total des stats du Pokémon (PV, Attaque, Défense, Spéc
 | Roguelite inspiré de PokéRogue | Concept déjà réalisé et très abouti |
 | Gestion d'arène (le joueur construit son arène, les autres l'affrontent) | Idée originale, mais l'éditeur d'arène et l'équilibrage entre joueurs alourdissent fortement le projet ; gardée comme évolution possible |
 | Toutes générations confondues | Plus de 1 000 Pokémon à intégrer et équilibrer ; perte de l'identité « 1ʳᵉ génération » |
-|  | trop lourd pour un jeu navigateur |
+| Jeu en 3D | Trop lourd pour un jeu navigateur |
 
 ## 5. Fonctionnalités principales
 

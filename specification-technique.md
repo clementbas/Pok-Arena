@@ -8,13 +8,25 @@ Ce document détaille la solution technique du projet.
 
 ## Sommaire
 
-1. [Solutions possibles](#1-solutions-possibles)
-2. [Solution retenue](#2-solution-retenue)
-3. [Points à définir](#3-points-à-définir)
+1. [Expression du besoin et utilisateurs](#1-expression-du-besoin-et-utilisateurs)
+2. [Positionnement](#2-positionnement)
+3. [Solutions possibles](#3-solutions-possibles)
+4. [Solution retenue](#4-solution-retenue)
+5. [Points à définir](#5-points-à-définir)
 
 ---
 
-## 1. Solutions possibles
+## 1. Expression du besoin et utilisateurs
+**Synthèse :** Le projet vise à offrir une expérience Pokémon courte et accessible dans un navigateur, pour les fans nostalgiques n'ayant plus le temps de s'investir dans les jeux principaux. Quatre profils d'utilisateurs (le nostalgique, le compétiteur, le collectionneur, l'occasionnel) orientent les fonctionnalités.
+
+*L'analyse complète des besoins, les personas détaillés et l'état de l'art sont disponibles dans la [Fiche de cadrage](fiche-de-cadrage.md) (sections 1, 2 et 3).*
+
+## 2. Positionnement
+**Synthèse :** Aucun jeu actuel ne combine la progression par arènes (façon Pokémon Rouge/Bleu) et la collection par boosters (façon JCC). Pok'Aréna se positionne exactement à l'intersection de ces deux mécaniques, en version web 2D.
+
+*L'état de l'art complet et le positionnement détaillé sont dans la [Fiche de cadrage](fiche-de-cadrage.md) (section 3).*
+
+## 3. Solutions possibles
 
 ### Solutions de concept
 
@@ -42,9 +54,9 @@ Ce document détaille la solution technique du projet.
 
 ---
 
-## 2. Solution retenue
+## 4. Solution retenue
 
-### 2.1 Fonctionnalités prévues
+### 4.1 Fonctionnalités prévues
 
 Les 16 fonctionnalités de la version 1, reprises de la fiche de cadrage, reliées aux écrans des wireframes.
 
@@ -67,7 +79,7 @@ Les 16 fonctionnalités de la version 1, reprises de la fiche de cadrage, relié
 | F15 | Amélioration des Pokémon avec les doublons | 7 |
 | F16 | Classement | 8 |
 
-### 2.2 Règles de jeu
+### 4.2 Règles de jeu
 
 Les règles de la fiche de cadrage sont conservées. Pour le développement, nous retenons les principes suivants.
 
@@ -79,7 +91,7 @@ Les règles de la fiche de cadrage sont conservées. Pour le développement, nou
 - **Défaite** : une défaite contre n'importe quel adversaire fait perdre l'arène, à recommencer depuis le début.
 - **Reprise** : la progression dans l'arène en cours est sauvegardée, le joueur peut fermer le navigateur et reprendre plus tard.
 
-### 2.3 Architecture logicielle
+### 4.3 Architecture logicielle
 
 Trois parties : une application Vue dans le navigateur, une API Express, une base PostgreSQL.
 
@@ -109,7 +121,7 @@ flowchart LR
 | Collection | `GET /api/collection`, `POST /api/collection/:id/upgrade`, `PUT /api/team` |
 | Classement | `GET /api/leaderboard` |
 
-### 2.4 Langages et librairies
+### 4.4 Langages et librairies
 
 | Domaine | Technologie |
 | --- | --- |
@@ -123,7 +135,7 @@ flowchart LR
 | Environnement local | Docker Compose (PostgreSQL) |
 | Intégration continue | GitHub Actions |
 
-### 2.5 Modélisations du système
+### 4.5 Modélisations du système
 
 **Cas d'utilisation**
 
@@ -192,7 +204,7 @@ Le schéma montre les tables principales. Les autres tables suivent le même pri
 - `ARENA_RUNS` garde la tentative d'arène en cours pour permettre la reprise.
 - Le classement se calcule avec `ARENA_PROGRESS` : arène la plus haute battue, puis date de victoire.
 
-### 2.6 Maquettes
+### 4.6 Maquettes
 
 Les maquettes sont des wireframes simples en noir et blanc, en version ordinateur et mobile, réalisés dans un fichier Figma (8 écrans, chacun en version ordinateur et mobile).
 
@@ -211,7 +223,7 @@ Les maquettes sont des wireframes simples en noir et blanc, en version ordinateu
 
 > **Note** : Les versions mobiles sont accessibles en cliquant sur les liens « Voir la version mobile ». L'ensemble des wireframes est également disponible dans le dossier `Maquettes/` du dépôt.
 
-### 2.7 Méthode d'organisation du travail
+### 4.7 Méthode d'organisation du travail
 
 **Rôles**
 
@@ -238,7 +250,7 @@ Les maquettes sont des wireframes simples en noir et blanc, en version ordinateu
 5. Arènes et exploration (F04 à F07).
 6. Classement, équilibrage, tests (F16).
 
-### 2.8 Organisation du dépôt Git
+### 4.8 Organisation du dépôt Git
 
 Un seul dépôt GitHub (monorepo).
 
@@ -270,7 +282,7 @@ pok-arena/
 
 ---
 
-## 3. Points à définir
+## 5. Points à définir
 
 Ces points sont à trancher par l'équipe, surtout par le game design. Une recommandation est proposée pour ne pas bloquer le développement.
 
