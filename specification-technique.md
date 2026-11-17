@@ -123,17 +123,17 @@ flowchart LR
 
 ### 4.4 Langages et librairies
 
-| Domaine | Technologie |
-| --- | --- |
-| Langage | JavaScript, avec Node.js 24 côté serveur |
-| Front-end | Vue 3, Vite, Vue Router, Pinia |
-| Jeu 2D | Phaser 4, cartes dessinées avec l'éditeur Tiled |
-| Back-end | Express |
-| Base de données | PostgreSQL, Sequelize |
-| Sécurité | jsonwebtoken, bcrypt |
-| Qualité | ESLint, Prettier, Vitest |
-| Environnement local | Docker Compose (PostgreSQL) |
-| Intégration continue | GitHub Actions |
+| Domaine | Technologie | Justification |
+| --- | --- | --- |
+| Langage | JavaScript, avec Node.js 24 côté serveur | Langage unique pour le front-end et le back-end, très répandu, riche écosystème. Langage familier pour les développeurs. |
+| Front-end | Vue 3, Vite, Vue Router, Pinia | Vue 3 est simple à prendre en main, bien documenté, avec un écosystème riche. Vite est rapide pour le développement. Vue Router et Pinia sont les solutions officielles pour la navigation et l'état global. |
+| Jeu 2D | Phaser 4, cartes dessinées avec l'éditeur Tiled | Phaser gère les cartes en tuiles, les collisions et le clavier. Tiled est un éditeur de cartes simple et gratuit. |
+| Back-end | Express | Express est simple et très répandu, avec un écosystème riche. |
+| Base de données | PostgreSQL, Sequelize | PostgreSQL est un SGBD relationnel robuste et répandu. Sequelize est un ORM simple et bien documenté. |
+| Sécurité | jsonwebtoken, bcrypt | jsonwebtoken pour les jetons JWT, bcrypt pour le hachage des mots de passe. |
+| Qualité | ESLint, Prettier, Vitest | ESLint et Prettier pour le style de code, Vitest pour les tests unitaires.
+| Environnement local | Docker Compose (PostgreSQL) | Docker Compose permet de lancer facilement la base de données PostgreSQL en local.
+| Intégration continue | GitHub Actions | GitHub Actions pour lancer les tests unitaires et vérifier le style de code à chaque pull request.
 
 ### 4.5 Modélisations du système
 
